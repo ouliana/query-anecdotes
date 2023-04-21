@@ -2,6 +2,7 @@ import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { getAnecdotes, addVote } from './requests';
 import AnecdoteForm from './components/AnecdoteForm';
 import Notification from './components/Notification';
+import Button from './components/Button';
 
 function App() {
   const queryClient = useQueryClient();
@@ -18,7 +19,7 @@ function App() {
   } = useQuery({
     queryKey: ['anecdotes'],
     queryFn: getAnecdotes,
-    retry: 1,
+    // retry: 1,
   });
 
   if (isLoading) {
@@ -41,7 +42,12 @@ function App() {
           <div>{anecdote.content}</div>
           <div>
             has {anecdote.votes}
-            <button onClick={() => handleVote(anecdote)}>vote</button>
+            <Button
+              type='VOTE'
+              label='vote'
+              anecdote={anecdote}
+              handleVote={handleVote}
+            />
           </div>
         </div>
       ))}

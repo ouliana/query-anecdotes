@@ -3,7 +3,9 @@ import axios from 'axios';
 const baseUrl = 'http://localhost:3001/anecdotes';
 
 export async function getAnecdotes() {
+  console.log('getAnecdotes is running');
   const response = await axios.get(baseUrl);
+  console.log(response.data);
   return response.data;
 }
 
