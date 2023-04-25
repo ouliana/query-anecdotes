@@ -9,6 +9,10 @@ const AnecdoteForm = () => {
     onSuccess: function () {
       queryClient.invalidateQueries('anecdotes');
     },
+    onError: function () {
+      dispatch({ type: 'ERROR' });
+      setTimeout(() => dispatch({ type: 'CLEAR' }), 5000);
+    },
   });
 
   const dispatch = useNotificationDispatch();

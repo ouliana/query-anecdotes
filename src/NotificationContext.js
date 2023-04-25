@@ -6,6 +6,8 @@ function notificationReducer(state, action) {
       return `anecdote "${action.payload}" voted`;
     case 'ADD':
       return `anecdote "${action.payload}" added`;
+    case 'ERROR':
+      return 'too short anecdote, must have length 5 or more';
     case 'CLEAR':
       return '';
     default:
